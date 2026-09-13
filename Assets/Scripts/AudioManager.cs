@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public void PlayCardFlipSound()
     {
         float randomNumber = Random.Range(0.80f, 1.20f);
-        UnityEngine.Debug.Log(randomNumber);
+        //UnityEngine.Debug.Log(randomNumber);
         audioSource.pitch = randomNumber;
         audioSource.PlayOneShot(cardFlip, 1);
     }

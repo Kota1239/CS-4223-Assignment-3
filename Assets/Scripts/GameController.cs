@@ -51,8 +51,8 @@ public class GameController : MonoBehaviour
         currentScore = 0;
         MapPreferences();
         timerOn = true;
-        UnityEngine.Debug.Log("Total cards: " + cardAmount);
-        UnityEngine.Debug.Log("Time limit: " + timeLimit);
+        //UnityEngine.Debug.Log("Total cards: " + cardAmount);
+        //UnityEngine.Debug.Log("Time limit: " + timeLimit);
         InstantiateCards();
     }
 
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
         {
             if (SelectedCards[0].GetComponent<CardController>().cardNumber == SelectedCards[1].GetComponent<CardController>().cardNumber)
             {
-                UnityEngine.Debug.Log("Pair found");
+                //UnityEngine.Debug.Log("Pair found");
                 pairsFound++;
                 currentScore += (10 * scoreMultiplier);
             }
@@ -189,7 +189,7 @@ public class GameController : MonoBehaviour
         for(int i = 0; i < (cardAmount / 2); i++)
         {
             int randomCard = Random.Range(0, CardPrefabs.Count);
-            UnityEngine.Debug.Log("Card number generated: " + randomCard);
+            //UnityEngine.Debug.Log("Card number generated: " + randomCard);
             CardList.Add(CardPrefabs[randomCard]);
             CardList.Add(CardPrefabs[randomCard]);
         }

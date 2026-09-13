@@ -21,11 +21,11 @@ public class CardController : MonoBehaviour
     {
         float angleY = gameObject.transform.eulerAngles.y;
         if (show == true) gameObject.transform.RotateAround(gameObject.transform.position, Vector3.up, 240 * Time.deltaTime);
-        if (angleY > 90) GetComponent<UnityEngine.UI.Image>().sprite = cardFace;
-        if (angleY >= 179) show = false;
+        if (angleY >89) GetComponent<UnityEngine.UI.Image>().sprite = cardFace;
+        if (angleY >= 175) show = false;
         if (hide == true) gameObject.transform.RotateAround(gameObject.transform.position, Vector3.up, -240 * Time.deltaTime);
-        if (angleY < 90) GetComponent<UnityEngine.UI.Image>().sprite = cardBack;
-        if (angleY <= 1) hide = false;
+        if (angleY < 91) GetComponent<UnityEngine.UI.Image>().sprite = cardBack;
+        if (angleY <= 5) hide = false;
     }
 
     public void ShowCard()
