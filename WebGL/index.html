@@ -3,44 +3,77 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | CS-4223-Assignment-3</title>
-  </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-	<p></br></br></br></br></br></p>
-    <canvas id="unity-canvas" width=1280 height=720 tabindex="-1" style="width: 1280px; height: 720px; background: #231F20"></canvas>
-    <script src="Build/WebGL.loader.js"></script>
+    <title>Unity WebGL Player</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <zlink rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
     <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json");
+    	function startup() {
+		window.onresize = function() {
+			resizeGame();
+		};
+		resizeGame();
+	}
+	function resizeGame() {
+	
+		//	Ensure that the game fits within the width of its containing
+		//	div, and is shallower than the height of the containing window.
+	
+		var containerDiv = document.getElementById('containerDiv');
+		var element = document.getElementById('gameContainer');      // the element
+		
+		var widthLimitedScale = Math.floor( containerDiv.offsetWidth ) / 1024.0;
+		var heightLimitedScale = (Math.floor( window.innerHeight ) - 50) / 768.0;
+		
+		var scale = widthLimitedScale;
+		if (heightLimitedScale < scale) scale = heightLimitedScale;
+		
+		element.style.width = Math.floor(1024 * scale) + 'px';
+		element.style.height = Math.floor(768 * scale) + 'px';
+		element.style.margin = "auto";
 
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
-
-        document.body.style.textAlign = "left";
-
-      }
-
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/WebGL.data",
-        frameworkUrl: "Build/WebGL.framework.js",
-        codeUrl: "Build/WebGL.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Dakota Lyons",
-        productName: "CS-4223-Assignment-3",
-        productVersion: "1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      }).then((unityInstance) => {
-      }).catch((message) => {
-        alert(message);
-      });
+	}
     </script>
-  </body>
+    <style>
+    		html {
+    			background-color: #000;
+    			color: #ccc;
+    			margin: 0;
+    			padding: 0;
+    		}
+    		body {
+    			margin: auto;
+    			padding-top: 1em;
+			padding-bottom:0em;
+    			padding: 2em;
+    			padding-top: 0em;
+    			text-align: center;
+    		}
+ 
+		canvas {  
+		 width: 100%;  
+		 height: 100%;  
+		}
+		#gameContainer { margin: auto; }
+		#containerDiv {
+			object-fit: contain;
+			max-width: 100%;
+			max-height: 100%;
+			width: auto;
+			height: auto;
+			margin: 4em;
+			margin-top: 0em;
+			margin-bottom:.9em;
+   		}
+ 	</style>
+  </head>
+  <body onload="startup();">
+  	<div id="containerDiv">
+		<div class="webgl-content">
+			<div id="gameContainer"></div>
+		</div>
+	</div>
+	</body>
 </html>
