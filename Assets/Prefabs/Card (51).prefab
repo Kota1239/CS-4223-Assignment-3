@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardFlipAnimation
   cardBack: {fileID: -874772863302626006, guid: 2391e43fbed882a4d9369472ee7e8978, type: 3}
-  cardFace: {fileID: -2723828375892563550, guid: dadb3153f9c395b4c8e9aaa891d151b7, type: 3}
+  cardFace: {fileID: 7704857750013115146, guid: 0210739833e70c940a3a4ce8603e5157, type: 3}
   cardNumber: 51
 --- !u!82 &-5593874316533529748
 AudioSource:

@@ -9,6 +9,6 @@ public class SetPlayerName : MonoBehaviour
     public void UpdatePlayerName()
     {
         GlobalSettings.SetPlayerName(playerNameInput.GetComponent<TMP_InputField>().text);
-        UnityEngine.Debug.Log(GlobalSettings.GetPlayerName());
+        //UnityEngine.Debug.Log(GlobalSettings.GetPlayerName());
     }
 }
